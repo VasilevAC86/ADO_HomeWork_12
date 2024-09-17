@@ -54,7 +54,7 @@
             // picBoxAvatar
             // 
             this.picBoxAvatar.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.picBoxAvatar.Location = new System.Drawing.Point(471, 65);
+            this.picBoxAvatar.Location = new System.Drawing.Point(278, 65);
             this.picBoxAvatar.Name = "picBoxAvatar";
             this.picBoxAvatar.Size = new System.Drawing.Size(120, 120);
             this.picBoxAvatar.TabIndex = 5;
@@ -85,7 +85,7 @@
             // 
             this.btnAddMaster.Enabled = false;
             this.btnAddMaster.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAddMaster.Location = new System.Drawing.Point(15, 205);
+            this.btnAddMaster.Location = new System.Drawing.Point(15, 155);
             this.btnAddMaster.Name = "btnAddMaster";
             this.btnAddMaster.Size = new System.Drawing.Size(170, 35);
             this.btnAddMaster.TabIndex = 6;
@@ -140,7 +140,7 @@
             this.lblAvatar.AutoSize = true;
             this.lblAvatar.Enabled = false;
             this.lblAvatar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblAvatar.Location = new System.Drawing.Point(468, 44);
+            this.lblAvatar.Location = new System.Drawing.Point(275, 44);
             this.lblAvatar.Name = "lblAvatar";
             this.lblAvatar.Size = new System.Drawing.Size(118, 18);
             this.lblAvatar.TabIndex = 11;
@@ -157,9 +157,9 @@
             this.gBAddMaster.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gBAddMaster.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.gBAddMaster.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.gBAddMaster.Location = new System.Drawing.Point(366, 214);
+            this.gBAddMaster.Location = new System.Drawing.Point(371, 214);
             this.gBAddMaster.Name = "gBAddMaster";
-            this.gBAddMaster.Size = new System.Drawing.Size(291, 265);
+            this.gBAddMaster.Size = new System.Drawing.Size(291, 213);
             this.gBAddMaster.TabIndex = 12;
             this.gBAddMaster.TabStop = false;
             this.gBAddMaster.Text = "Добавление нового мастера";
@@ -179,15 +179,17 @@
             // gBEditMaster
             // 
             this.gBEditMaster.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.gBEditMaster.Controls.Add(this.tBCoefficient);
             this.gBEditMaster.Controls.Add(this.tBEditMaster);
+            this.gBEditMaster.Controls.Add(this.lblCoefficient);
             this.gBEditMaster.Controls.Add(this.btnEditMaster);
             this.gBEditMaster.Controls.Add(this.lblEditMaster);
             this.gBEditMaster.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gBEditMaster.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.gBEditMaster.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.gBEditMaster.Location = new System.Drawing.Point(25, 214);
+            this.gBEditMaster.Location = new System.Drawing.Point(24, 214);
             this.gBEditMaster.Name = "gBEditMaster";
-            this.gBEditMaster.Size = new System.Drawing.Size(308, 191);
+            this.gBEditMaster.Size = new System.Drawing.Size(324, 213);
             this.gBEditMaster.TabIndex = 13;
             this.gBEditMaster.TabStop = false;
             this.gBEditMaster.Text = "Редактирование мастера";
@@ -205,7 +207,7 @@
             // 
             this.btnEditMaster.Enabled = false;
             this.btnEditMaster.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnEditMaster.Location = new System.Drawing.Point(15, 138);
+            this.btnEditMaster.Location = new System.Drawing.Point(15, 155);
             this.btnEditMaster.Name = "btnEditMaster";
             this.btnEditMaster.Size = new System.Drawing.Size(255, 35);
             this.btnEditMaster.TabIndex = 6;
@@ -220,9 +222,9 @@
             this.lblEditMaster.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblEditMaster.Location = new System.Drawing.Point(6, 26);
             this.lblEditMaster.Name = "lblEditMaster";
-            this.lblEditMaster.Size = new System.Drawing.Size(293, 18);
+            this.lblEditMaster.Size = new System.Drawing.Size(309, 18);
             this.lblEditMaster.TabIndex = 8;
-            this.lblEditMaster.Text = "Поле редактирования фамилии мастера";
+            this.lblEditMaster.Text = "1. Поле редактирования фамилии мастера";
             // 
             // lblName
             // 
@@ -238,18 +240,18 @@
             // 
             this.lblCoefficient.AutoSize = true;
             this.lblCoefficient.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblCoefficient.Location = new System.Drawing.Point(265, 44);
+            this.lblCoefficient.Location = new System.Drawing.Point(12, 92);
             this.lblCoefficient.Name = "lblCoefficient";
-            this.lblCoefficient.Size = new System.Drawing.Size(170, 18);
+            this.lblCoefficient.Size = new System.Drawing.Size(186, 18);
             this.lblCoefficient.TabIndex = 15;
-            this.lblCoefficient.Text = "Коэффициент мастера";
+            this.lblCoefficient.Text = "2. Коэффициент мастера";
             // 
             // tBCoefficient
             // 
-            this.tBCoefficient.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tBCoefficient.Location = new System.Drawing.Point(268, 65);
+            this.tBCoefficient.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tBCoefficient.Location = new System.Drawing.Point(15, 113);
             this.tBCoefficient.Name = "tBCoefficient";
-            this.tBCoefficient.Size = new System.Drawing.Size(167, 32);
+            this.tBCoefficient.Size = new System.Drawing.Size(284, 24);
             this.tBCoefficient.TabIndex = 9;
             // 
             // Form1
@@ -257,8 +259,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 561);
-            this.Controls.Add(this.tBCoefficient);
-            this.Controls.Add(this.lblCoefficient);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.gBEditMaster);
             this.Controls.Add(this.btnDeleteMaster);

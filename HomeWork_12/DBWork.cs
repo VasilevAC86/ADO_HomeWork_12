@@ -100,7 +100,9 @@ namespace Service
                 conn.Open();
                 var reader = cmd.ExecuteReader();
                 if (reader.HasRows)
-                    result = reader.GetValue(0).ToString();
+                    while (reader.Read())
+                        if (!reader.IsDBNull(0)) // Если не null, то
+                            result = reader.GetValue(0).ToString();
             }
             return result;
         }

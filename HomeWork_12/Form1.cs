@@ -5,6 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using System.Globalization; // Для точек и запятых
 
 namespace HomeWork_12
 {
@@ -20,7 +21,7 @@ namespace HomeWork_12
                 tBAddMaster.Enabled = true;
                 lblNumberMaster.Enabled = true;
                 tBNumberMaster.Enabled = true;
-                lblAvatar.Enabled = true;
+                lblAvatar.Enabled = true;                
             }
             FillMechanicsName();            
         }
@@ -74,14 +75,18 @@ namespace HomeWork_12
                 btnEditMaster.Enabled = true;
                 tBEditMaster.Enabled = true;
                 tBEditMaster.Text = cmbMechanic.Text;
-                //tBCoefficient.Text = DBWork.GetCoefficient(cmbMechanic.Text);
+                tBCoefficient.Text = DBWork.GetCoefficient(cmbMechanic.Text);
+                tBAddMaster.Text = string.Empty;
+                tBNumberMaster.Text = string.Empty;
             }
         }
         private void btnAddMaster_Click(object sender, EventArgs e)
-        {
+        {            
             // sql-запрос на добавление записи в таблицу
-            DataChanged("INSERT INTO Mechanic (number, name) VALUES " +                        
-                        $"('{tBNumberMaster.Text}', '{tBAddMaster.Text}');");
+            DataChanged("INSERT INTO Mechanic (number, name, coefficient) VALUES " +                        
+                        $"('{tBNumberMaster.Text}', '{tBAddMaster.Text}', 1);");
+            tBEditMaster.Text = string.Empty;
+            tBCoefficient.Text = string.Empty;
         }
         // Метод проверки заполненности обязательных полей при добавлении нового мастера
         private void TextChanged(object sender, EventArgs e)
@@ -93,30 +98,40 @@ namespace HomeWork_12
         {            
             DataChanged("DELETE FROM Mechanic WHERE NAME = " +                        
                         $"'{cmbMechanic.Text}';"); // sql-запрос на удаление записи из таблицы
+            tBEditMaster.Text = string.Empty;
+            tBCoefficient.Text = string.Empty;
         }
 
         private void btnEditMaster_Click(object sender, EventArgs e)
         {
             if (tBEditMaster.Text != string.Empty ) // Если в строке редактирования что-то есть, то
-            {                
                 DataChanged("UPDATE Mechanic SET NAME = " +
                             $"'{tBEditMaster.Text}' WHERE NAME = " +
-                            $"'{cmbMechanic.Text}';"); // sql-запрос на изменение записи в таблице
-            }
+                            $"'{cmbMechanic.Text}';"); // sql-запрос на изменение записи в таблице            
+            if (tBCoefficient.Text != string.Empty) // Если в строке редактирования что-то есть, то                                                            
+            {
+                DataChanged("UPDATE Mechanic SET Coefficient = " +
+                        $"{float.Parse(tBCoefficient.Text.Replace('.', ','))} WHERE NAME = " +
+                        $"'{tBEditMaster.Text}';", false); // sql-запрос на изменение записи в таблице             
+                }
         }
 
-        private void DataChanged(string querry) // Общий код для кнопок "Добавить", "Удалить", "Редактировать"
-        {
+        // Общий код с параметром по умолчанию для кнопок "Добавить", "Удалить", "Редактировать"
+        private void DataChanged(string querry, bool key = true) 
+        {            
             string path = $"Data Source=AutoService.db;"; // Путь к базе данных
             SQLiteConnection conn = new SQLiteConnection(path); // Конструируем новое соединение с БД
             SQLiteCommand cmd01 = conn.CreateCommand(); // Инициализируем команду
-            cmd01.CommandText = querry;
+            if (!key) // Если надо заменить запятые на точку (запрос изменения коэффициента), то
+                cmd01.CommandText = querry.Replace(',', '.');
+            else
+                cmd01.CommandText = querry;
             conn.Open(); // Открываем соединение с БД
             cmd01.ExecuteNonQuery(); // Выполняем команду
             conn.Close(); // Закрываем соединение с БД
             cmbMechanic.Text = string.Empty; // Чистим строку в checkbox
             cmbMechanic.Items.Clear(); // Чистим список checkbox
             FillMechanicsName(); // Обновляем данные в checkbox
-        }
+        }        
     }
 }
