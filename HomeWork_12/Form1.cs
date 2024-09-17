@@ -125,7 +125,7 @@ namespace HomeWork_12
             if (!key) // Если надо заменить запятые на точку (запрос изменения коэффициента), то
                 cmd01.CommandText = querry.Replace(',', '.');
             else
-                cmd01.CommandText = querry;
+                cmd01.CommandText = querry; // Если запятые менять на точки не надо
             conn.Open(); // Открываем соединение с БД
             cmd01.ExecuteNonQuery(); // Выполняем команду
             conn.Close(); // Закрываем соединение с БД
